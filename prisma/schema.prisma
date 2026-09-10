@@ -18,3 +18,21 @@ model School {
   address   String?
   createdAt DateTime @default(now())
 }
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  TEACHER
+  STUDENT
+  PARENT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      Role
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
