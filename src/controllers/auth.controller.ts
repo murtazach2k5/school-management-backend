@@ -51,3 +51,12 @@ export const login = async (req: Request, res: Response) => {
     });
   }
 };
+import { AuthRequest } from "../middlewares/auth.middleware";
+
+export const getMe = async (req: AuthRequest, res: Response) => {
+  return res.status(200).json({
+    success: true,
+    message: "Authenticated user info",
+    data: req.user,
+  });
+};
